@@ -1,6 +1,14 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+// Hash function to generate a recognizable plaintext
+string generate_hash(const string& input) {
+    size_t hash_val = hash<string>{}(input); // C++ STL hash
+    stringstream ss;
+    ss << hex << hash_val; // Convert to hexadecimal
+    return ss.str().substr(0, 8); // Limit hash length
+}
+
 void initialize_ency_table( unordered_map<char, string>& ency_table) {
     ency_table['A'] = "000";
     ency_table['B'] = "001";
